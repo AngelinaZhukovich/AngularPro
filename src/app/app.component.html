@@ -25,14 +25,31 @@
   </div>
 
   <div class="filter">
+      <div class="container">
+        <div>
+          <label>
+            <input (change)="onCheckboxChange($event)" type="checkbox" name="men">
+            Men
+          </label>
+
+          <label>
+            <input (change)="onCheckboxChange($event)" type="checkbox" name="women">
+            Women
+          </label>
+        </div>
+          <button>See all products</button>
+        <div>
+          
+        </div>
+      </div>
 
   </div>
 
   <div class="catalog container">
 
-    <app-slider header="Ololo" [slides]="menSlides"></app-slider>
+    <app-slider header="Men" [slides]="menSlides"></app-slider>
 
-    <app-slider></app-slider>
+    <app-slider header="Women" [slides]="womenSlides"></app-slider>
 
     <app-slider></app-slider>
 

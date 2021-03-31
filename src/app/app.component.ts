@@ -9,13 +9,23 @@ import { CatalogService } from './services/catalog/catalog.service';
 export class AppComponent {
 
   menSlides = [];
+  womenSlides =[];
 
   constructor(private catalogService: CatalogService ) {}
 
   ngOnInit() {
     this.catalogService.getMenSlides().subscribe((data) => {
       this.menSlides = data;
+    });
+
+    this.catalogService.getWomenSlides().subscribe((data) => {
+      this.womenSlides = data;
     })
+
+  }
+
+  onCheckbox(e:any){
+    console.log(e);
   }
 
 }

@@ -12,4 +12,8 @@ export class CatalogService {
     return this.http.get('assets/mocks/menSlides.json');
   }
 
+  getWomenSlides(): Observable<any> {
+    return this.http.get('assets/mocks/womenSlides.json');
+  }
+
 }
