@@ -1,6 +1,6 @@
 .hero {
     color: white;
-    background-image: url('../assets/bg.png');
+    background-image: url('../../../assets/bg.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -26,5 +26,20 @@
     .scroll {
         position: absolute;
         bottom: 50px;
+    }
+}
+
+.filter {
+    padding: 50px 0;
+    background: #f5f6f7;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    label {
+        user-select: none;
+        cursor: pointer;
     }
 }
