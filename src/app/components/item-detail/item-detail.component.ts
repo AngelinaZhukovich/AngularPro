@@ -23,5 +23,6 @@ export class ItemDetailComponent implements OnInit {
       this.details = data;
     });
   }
+  
 
 }
