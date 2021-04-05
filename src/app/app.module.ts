@@ -13,6 +13,7 @@ import { SearchComponent } from './components/search/search.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { SliderComponent } from './components/slider/slider.component';
 import { CartComponent } from './components/cart/cart.component';
+import { RedDirective } from './directives/red.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CartComponent } from './components/cart/cart.component';
     ItemDetailComponent,
     SearchComponent,
     SliderComponent,
-    CartComponent
+    CartComponent,
+    RedDirective
   ],
   imports: [
     BrowserModule,
