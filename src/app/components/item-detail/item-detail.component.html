@@ -1,6 +1,6 @@
 
 <div *ngIf="details">
-   <h2> {{ details.name }}</h2> 
-    <p> {{ details.price }}</p>
-    <button (click)='addItemToCart'>Add to Cart</button>
+    <h2>{{ details.name }}</h2>  
+    <p>{{ details.price }}</p>
+    <button (click)="addItemToCart(details)">Add to Cart</button>
 </div>

@@ -1,10 +1,12 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appRed]'
+  selector: '[appHide]'
 })
 export class RedDirective {
 
-  constructor() { }
+  constructor(private eleRef: ElementRef) {
+    eleRef.nativeElement.style.display = 'none';
+  }
 
 }

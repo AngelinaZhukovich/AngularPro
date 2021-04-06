@@ -7,24 +7,23 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartService {
 
-  private itemInCart: number = 0;
-  private itemInCart$ = new BehaviorSubject<number>(0);
+  private items: any[] = [];
+  private itemsInCart: number = 0;
+  private itemsInCart$ = new BehaviorSubject<number>(0);
 
-  public setItemsInCart (n?: number) {
-    if (n) {
-      this.itemsInCart = n;
-    } else {
-      this.itemsInCart++;
-    }
-    this.itemsInCart.next(this.itemsInCart);
+  public setItemsInCart(item: Object) {
+    this.itemsInCart++;
+    this.items.push(item);
+    this.itemsInCart$.next(this.itemsInCart);
   }
 
-  public getSubscription (){
+  public getSubscription() {
     return this.itemsInCart$;
   }
 
-  constructor () {
-
+  public getCartItems(): any[] {
+    return this.items;
   }
 
+  constructor() { }
 }
