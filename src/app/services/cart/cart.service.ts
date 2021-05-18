@@ -53,11 +53,11 @@ export class CartService {
   }
 
   private calculateItemsInCart(items: any[]): number {
-      let result = items.reduce((total, value) => {
-        return value.amount ? total + value.amount : total + 1;
-      }, 0);
-      console.log(result);
-      return result;
+    let result = items.reduce((total, value) => {
+      return value.amount ? total + value.amount : total + 1;
+    }, 0);
+    console.log(result);
+    return result;
   }
 
   constructor() { }

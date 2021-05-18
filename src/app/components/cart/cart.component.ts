@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
     private cart: CartService,
     private store: Store<{ cart: { amount: number } }>
   ) {
-    this.cartAmount$ = store.select('cart.amount')
+    // this.cartAmount$ = store.select('cart.amount')
   }
 
   ngOnInit(): void {
