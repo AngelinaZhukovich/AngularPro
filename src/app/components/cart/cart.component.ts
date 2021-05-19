@@ -3,7 +3,8 @@ import { CartService } from '../../services/cart/cart.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { addToCart, removeFromCart } from '../../actions/actions.cart';
-import { State } from '../../reducers';
+import { AppState } from '../../reducers';
+import { selectCartCount } from '../../selectors/selectors.cart'; 
 import { Observable } from 'rxjs';
 
 @Component({
@@ -20,11 +21,11 @@ export class CartComponent implements OnInit {
 
   items: any[] = [];
 
-  cartAmount$!: Observable<number>;
+  cartAmount$ = this.store.select(selectCartCount);
 
   constructor(
     private cart: CartService,
-    private store: Store<{ cart: { amount: number } }>
+    private store: Store<AppState>
   ) {
     // this.cartAmount$ = store.select('cart.amount')
   }
