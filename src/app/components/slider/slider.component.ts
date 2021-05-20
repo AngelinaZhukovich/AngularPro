@@ -11,9 +11,9 @@ export class SliderComponent implements OnInit {
   @Input() slides: any[] = [];
   @Input() header: string = '';
 
-  @ViewChild('nav', {read: DragScrollComponent}) ds!: DragScrollComponent;
+  @ViewChild('nav', { read: DragScrollComponent }) ds!: DragScrollComponent;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngAfterViewInit() {
     this.ds.moveTo(0);

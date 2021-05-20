@@ -1,31 +1,58 @@
-import { Action, createReducer, on, State } from '@ngrx/store';
-import { addItemToCart, addToCart, removeFromCart } from '../actions/actions.cart';
+import { Action, createReducer, on } from '@ngrx/store';
+import { addToCart, removeFromCart, addItemToCart } from '../actions/actions.cart';
 import { Product } from '../interfaces/product';
-import { Product } from './../vjdfvk'
 
-export interface cartState {
+
+export interface State {
   amount: number,
-  items: any[],
+  items: { [key: string]: Product },
 }
 
-const cartState: cartState = {
+const cartState: State = {
   amount: 0,
-  items: [],
+  items: {},
 };
 
 const _cartReducer = createReducer(
   cartState,
-  on(addToCart, (state: cartState) => ({ ...state, amount: state.amount + 1 })),
-  on(removeFromCart, (state: cartState) => ({ ...state, amount: state.amount - 1 })),
-  on (addItemToCart, (state: State, payload: Product)=>{
-     return {
-       ... state,
-       items: cartState.items.push(payload)
-     }
+  on(addToCart, (state: State) => ({ ...state, amount: state.amount + 1 })),
+  on(removeFromCart, (state: State) => ({ ...state, amount: state.amount - 1 })),
+  on(addItemToCart, (state: State, product) => {
+    if (product.id in state.items) {
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [product.id]: {
+            ...product,
+            amount: state.items[product.id].amount + 1
+          }
+        }
+      }
+    } else {
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [product.id]: {
+            ...product,
+            amount: 1,
+          }
+        }
+      }
+    }
+
   })
 
 );
 
 export function cartReducer(state: State = cartState, action: Action) {
   return _cartReducer(state, action);
+}
+
+const calculateItemsInCart = (items: any[]): number => {
+  let result = items.reduce((total, value) => {
+    return value.amount ? total + value.amount : total + 1;
+  }, 0);
+  return result;
 }

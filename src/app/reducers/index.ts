@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 import * as formCart from './reducer.cart';
 
 export interface AppState {
-  cart: formCart.AppState
+  cart: formCart.State
 }
 
 export const reducers: ActionReducerMap<AppState> = {

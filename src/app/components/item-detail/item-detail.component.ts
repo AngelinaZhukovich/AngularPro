@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogService } from '../../services/catalog/catalog.service';
 import { CartService } from '../../services/cart/cart.service';
-
+import { Store } from '@ngrx/store';
+import { addItemToCart, addToCart } from '../../actions/actions.cart';
 
 @Component({
   selector: 'app-item-detail',
@@ -18,7 +19,8 @@ export class ItemDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private catalogService: CatalogService,
     private cart: CartService,
-  ){}
+    private store: Store,
+  ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') as string;
@@ -27,8 +29,9 @@ export class ItemDetailComponent implements OnInit {
     });
   }
 
-  addItemToCart(details: any) {
-    this.cart.setItemsInCart(details);
+  addItemToCart(product: any) {
+    this.store.dispatch(addItemToCart(product));
+    this.store.dispatch(addToCart());
   }
 
 }
